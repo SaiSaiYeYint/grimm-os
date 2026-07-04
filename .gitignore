@@ -1,0 +1,12 @@
+node_modules/
+.env
+api/
+server.js
+package.json
+pnpm-lock.yaml
+pnpm-workspace.yaml
+vercel.json
+start-grimm-bridge.ps1
+GRIMM_API_CONTRACT.md
+CLAUDE_TESTING.md
+VERCEL_DEPLOY.md
