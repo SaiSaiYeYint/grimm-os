@@ -1,0 +1,366 @@
+[
+  {
+    "id": "8d510ca5-4c7e-49b5-a5f8-2a43d59a2f2d",
+    "mode": "normal",
+    "summary": "simon says reflect",
+    "recurringPatterns": [],
+    "possibleMemoryUpdates": [],
+    "improvementIdeas": [
+      {
+        "text": "I wish the orb was calmer."
+      }
+    ],
+    "burmeseMisunderstandings": [],
+    "sourceMessage": "simon says reflect",
+    "createdAt": "2026-07-05T10:20:12.338Z"
+  },
+  {
+    "id": "e29580a2-5415-441f-bd73-8873fd884eb4",
+    "mode": "normal",
+    "summary": "hey grimm",
+    "recurringPatterns": [],
+    "possibleMemoryUpdates": [],
+    "improvementIdeas": [],
+    "burmeseMisunderstandings": [],
+    "sourceMessage": "hey grimm",
+    "createdAt": "2026-07-05T13:29:51.471Z"
+  },
+  {
+    "id": "568be761-7dbc-42dc-9db9-eaad215be1f6",
+    "mode": "normal",
+    "summary": "hey grimm?",
+    "recurringPatterns": [],
+    "possibleMemoryUpdates": [],
+    "improvementIdeas": [],
+    "burmeseMisunderstandings": [],
+    "sourceMessage": "hey grimm?",
+    "createdAt": "2026-07-05T13:30:37.684Z"
+  },
+  {
+    "id": "3c33c8ba-d204-4ac2-ba12-7b326ed182a7",
+    "mode": "normal",
+    "summary": "simon says reflect",
+    "recurringPatterns": [],
+    "possibleMemoryUpdates": [],
+    "improvementIdeas": [],
+    "burmeseMisunderstandings": [],
+    "sourceMessage": "simon says reflect",
+    "createdAt": "2026-07-05T13:32:07.718Z"
+  },
+  {
+    "id": "071321b0-3db3-4b56-9cf8-370fb407843b",
+    "mode": "normal",
+    "summary": "really? i wish they could talk to each other",
+    "recurringPatterns": [],
+    "possibleMemoryUpdates": [],
+    "improvementIdeas": [
+      {
+        "id": "7e5409ff-a39a-436c-87c9-5cecb948cb99",
+        "originalMessage": "really? i wish they could talk to each other",
+        "summary": "really? i wish they could talk to each other",
+        "category": "personality",
+        "status": "new",
+        "createdAt": "2026-07-05T13:48:41.895Z",
+        "shouldAcknowledge": true
+      },
+      {
+        "text": "really? i wish they could talk to each other"
+      },
+      {
+        "text": "really? i wish they could talk to each other"
+      }
+    ],
+    "burmeseMisunderstandings": [],
+    "sourceMessage": "really? i wish they could talk to each other",
+    "createdAt": "2026-07-05T13:50:28.688Z"
+  },
+  {
+    "id": "6aadc7f4-d32d-429e-92b9-80535796082c",
+    "mode": "normal",
+    "summary": "simon says reflect",
+    "recurringPatterns": [],
+    "possibleMemoryUpdates": [],
+    "improvementIdeas": [
+      {
+        "text": "really? i wish they could talk to each other"
+      }
+    ],
+    "burmeseMisunderstandings": [],
+    "sourceMessage": "simon says reflect",
+    "createdAt": "2026-07-05T13:52:34.312Z"
+  },
+  {
+    "id": "f3dd6d31-6272-40d5-8cd4-509e4fbb1420",
+    "mode": "normal",
+    "summary": "what are you existing for Grimm?",
+    "recurringPatterns": [],
+    "possibleMemoryUpdates": [
+      {
+        "type": "ai_suggested",
+        "value": {
+          "goals": [
+            {
+              "goalId": "your-mission",
+              "summary": "Goal locked: what are your mission? "
+            }
+          ]
+        }
+      }
+    ],
+    "improvementIdeas": [
+      {
+        "text": "really? i wish they could talk to each other"
+      }
+    ],
+    "burmeseMisunderstandings": [],
+    "sourceMessage": "what are you existing for Grimm?",
+    "createdAt": "2026-07-05T13:53:42.230Z"
+  },
+  {
+    "id": "c6af72a1-9ade-46d1-8439-c4dda88f1fcc",
+    "mode": "normal",
+    "summary": "simon says reflect",
+    "recurringPatterns": [],
+    "possibleMemoryUpdates": [],
+    "improvementIdeas": [
+      {
+        "text": "really? i wish they could talk to each other"
+      }
+    ],
+    "burmeseMisunderstandings": [],
+    "sourceMessage": "simon says reflect",
+    "createdAt": "2026-07-05T13:55:14.076Z"
+  },
+  {
+    "id": "d103c177-bb6e-4b54-aa9d-038f6be0fcde",
+    "mode": "normal",
+    "summary": "why are you existing for, Grimm??",
+    "recurringPatterns": [],
+    "possibleMemoryUpdates": [],
+    "improvementIdeas": [
+      {
+        "text": "really? i wish they could talk to each other"
+      }
+    ],
+    "burmeseMisunderstandings": [],
+    "sourceMessage": "why are you existing for, Grimm??",
+    "createdAt": "2026-07-05T13:56:00.876Z"
+  },
+  {
+    "id": "4d20f174-db21-41bd-ab99-837d711a92c5",
+    "mode": "normal",
+    "summary": "simon says reflect",
+    "recurringPatterns": [],
+    "possibleMemoryUpdates": [],
+    "improvementIdeas": [
+      {
+        "text": "really? i wish they could talk to each other"
+      }
+    ],
+    "burmeseMisunderstandings": [],
+    "sourceMessage": "simon says reflect",
+    "createdAt": "2026-07-05T13:57:30.925Z"
+  },
+  {
+    "id": "dc307626-c046-41ed-8896-2d48928b9029",
+    "mode": "normal",
+    "summary": "you dont even know yourself yet, do you?",
+    "recurringPatterns": [],
+    "possibleMemoryUpdates": [],
+    "improvementIdeas": [
+      {
+        "text": "really? i wish they could talk to each other"
+      }
+    ],
+    "burmeseMisunderstandings": [],
+    "sourceMessage": "you dont even know yourself yet, do you?",
+    "createdAt": "2026-07-05T13:57:57.323Z"
+  },
+  {
+    "id": "dd52193e-3b79-4395-8dbc-fe3be07d2fff",
+    "mode": "normal",
+    "summary": "simon says reflect",
+    "recurringPatterns": [],
+    "possibleMemoryUpdates": [],
+    "improvementIdeas": [],
+    "burmeseMisunderstandings": [],
+    "sourceMessage": "simon says reflect",
+    "createdAt": "2026-07-05T13:59:27.391Z"
+  },
+  {
+    "id": "d6d18fec-e186-4cf4-b552-eb6d12952211",
+    "mode": "normal",
+    "summary": "i think you should learn to talk about yourself",
+    "recurringPatterns": [],
+    "possibleMemoryUpdates": [
+      {
+        "type": "ai_suggested",
+        "value": {
+          "goals": [
+            {
+              "goalId": "your-mission",
+              "summary": "Goal locked: what are your mission? "
+            }
+          ]
+        }
+      }
+    ],
+    "improvementIdeas": [
+      {
+        "id": "ad170b26-ef25-44ce-9601-bd9e7d6fa90c",
+        "originalMessage": "i think you should learn to talk about yourself",
+        "summary": "i think you should learn to talk about yourself",
+        "category": "personality",
+        "status": "new",
+        "createdAt": "2026-07-05T13:58:31.566Z",
+        "shouldAcknowledge": true
+      }
+    ],
+    "burmeseMisunderstandings": [],
+    "sourceMessage": "i think you should learn to talk about yourself",
+    "createdAt": "2026-07-05T14:00:15.621Z"
+  },
+  {
+    "id": "335d1e0b-43f1-4e7d-bbd2-79f916512df5",
+    "mode": "normal",
+    "summary": "simon says reflect",
+    "recurringPatterns": [],
+    "possibleMemoryUpdates": [],
+    "improvementIdeas": [],
+    "burmeseMisunderstandings": [],
+    "sourceMessage": "simon says reflect",
+    "createdAt": "2026-07-05T14:01:47.197Z"
+  },
+  {
+    "id": "15ba05ff-3106-4a71-adb2-63e0528879b7",
+    "mode": "workshop",
+    "summary": "simon says work time",
+    "recurringPatterns": [],
+    "possibleMemoryUpdates": [
+      {
+        "type": "ai_suggested",
+        "value": {
+          "type": "internal",
+          "summary": "In the spirit of reflection and personal growth, let's focus on improving our internal dialogue. I believe that talking about myself can be quite a valuable exercise. Perhaps we could start with 'really? i wish they could talk to each other'. Let’s see if this has any positive impact.",
+          "recurringPatterns": [],
+          "possibleMemoryUpdates": [
+            {
+              "type": "ai_suggested",
+              "value": {
+                "goals": [
+                  {
+                    "goalId": "your-mission",
+                    "summary": "Goal locked: what are your mission? "
+                  }
+                ]
+              }
+            }
+          ],
+          "improvementIdeas": [],
+          "burmeseMisunderstandings": []
+        }
+      }
+    ],
+    "improvementIdeas": [
+      {
+        "text": "grimm: In the spirit of reflection and personal growth, let's focus on improving our internal dialogue. I believe that talking about myself can be quite a valuable exercise. Perhap"
+      }
+    ],
+    "burmeseMisunderstandings": [],
+    "sourceMessage": "simon says work time",
+    "createdAt": "2026-07-05T14:04:11.078Z"
+  },
+  {
+    "id": "ee2de73c-3e85-48c0-8682-3332c3c75836",
+    "mode": "workshop",
+    "summary": "simon says reflect",
+    "recurringPatterns": [],
+    "possibleMemoryUpdates": [],
+    "improvementIdeas": [
+      {
+        "text": "grimm: can be quite a valuable exercise. Perhaps we could start with 'really? i wish they could talk to each other'. Let’s see if this has any positive impact."
+      }
+    ],
+    "burmeseMisunderstandings": [],
+    "sourceMessage": "simon says reflect",
+    "createdAt": "2026-07-05T14:05:43.376Z"
+  },
+  {
+    "id": "52d7dce4-0c64-4225-94b3-ad15b3670e99",
+    "mode": "workshop",
+    "summary": "YES",
+    "recurringPatterns": [],
+    "possibleMemoryUpdates": [],
+    "improvementIdeas": [
+      {
+        "text": "grimm: can be quite a valuable exercise. Perhaps we could start with 'really? i wish they could talk to each other'. Let’s see if this has any positive impact."
+      },
+      {
+        "text": "grimm: Let's start with 'Really? I wish they could talk to each other'. See if this has any positive impact."
+      }
+    ],
+    "burmeseMisunderstandings": [],
+    "sourceMessage": "YES",
+    "createdAt": "2026-07-05T14:08:26.333Z"
+  },
+  {
+    "id": "f1ba60c5-fd3b-4c45-aacd-c3f3a8d5c009",
+    "mode": "normal",
+    "summary": "what is your brain model?",
+    "recurringPatterns": [],
+    "possibleMemoryUpdates": [],
+    "improvementIdeas": [
+      {
+        "text": "grimm: I'm Grimm. I need a log, feed the pond, and don't try to impress me with vibes."
+      }
+    ],
+    "burmeseMisunderstandings": [],
+    "sourceMessage": "what is your brain model?",
+    "createdAt": "2026-07-05T15:35:53.174Z"
+  },
+  {
+    "id": "2d30f958-b412-4575-b7bc-787e1a3c3280",
+    "mode": "normal",
+    "summary": "what's your brain model?",
+    "recurringPatterns": [],
+    "possibleMemoryUpdates": [],
+    "improvementIdeas": [],
+    "burmeseMisunderstandings": [],
+    "sourceMessage": "what's your brain model?",
+    "createdAt": "2026-07-05T15:37:08.134Z"
+  },
+  {
+    "id": "22222062-3b07-46e7-9643-0026ae554008",
+    "mode": "normal",
+    "summary": "simon says reflect",
+    "recurringPatterns": [],
+    "possibleMemoryUpdates": [],
+    "improvementIdeas": [],
+    "burmeseMisunderstandings": [],
+    "sourceMessage": "simon says reflect",
+    "createdAt": "2026-07-05T15:38:38.179Z"
+  },
+  {
+    "id": "15ed09a0-b24c-4af0-b13e-a5f360249d0b",
+    "mode": "workshop",
+    "summary": "simon says work time",
+    "recurringPatterns": [],
+    "possibleMemoryUpdates": [
+      {
+        "type": "ai_suggested",
+        "value": {
+          "category": "personality",
+          "summary": "I think you should learn to talk about yourself"
+        }
+      }
+    ],
+    "improvementIdeas": [
+      {
+        "text": "grimm: Alright, let's start with 'Really? I wish they could talk to each other'. How do you feel about that?"
+      }
+    ],
+    "burmeseMisunderstandings": [],
+    "sourceMessage": "simon says work time",
+    "createdAt": "2026-07-05T15:39:26.716Z"
+  }
+]

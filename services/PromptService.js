@@ -8,10 +8,11 @@ export class PromptService {
 
   build(input = {}) {
     return {
-      systemInstruction: this.read("grimm/constitution.md"),
+      systemInstruction: this.coreFiles().map(file => this.section(file)).filter(Boolean).join("\n\n"),
       userPrompt: [
         ...this.promptFiles(input.mode).map(file => this.section(file)),
         this.section("runtime/memory-summary.json", JSON.stringify(this.memorySummary(input.playerMemory), null, 2)),
+        input.reflectionSummary ? this.section("runtime/private-reflection-summary.json", JSON.stringify(input.reflectionSummary, null, 2)) : "",
         this.section("runtime/recent-messages.json", JSON.stringify(input.recentMessages || [], null, 2)),
         this.section("runtime/input.json", JSON.stringify(input, null, 2)),
         this.section("runtime/response-schema.json", JSON.stringify(responseSchema(), null, 2))
@@ -21,11 +22,19 @@ export class PromptService {
 
   promptFiles(mode = "normal") {
     return [
-      "grimm/personality.md",
       "grimm/rules.md",
-      "grimm/examples.md",
       "grimm/operating_manual.md",
       mode === "workshop" ? "grimm/prompts/grimm_workshop.md" : "grimm/prompts/grimm_normal.md"
+    ];
+  }
+
+  coreFiles() {
+    return [
+      "grimm/identity.md",
+      "grimm/mission.md",
+      "grimm/voice.md",
+      "grimm/constitution.md",
+      "grimm/examples.md"
     ];
   }
 

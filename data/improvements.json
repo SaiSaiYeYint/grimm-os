@@ -1,0 +1,48 @@
+[
+  {
+    "id": "0c07915b-0fb9-4a60-ac42-42f1e52786dc",
+    "originalMessage": "I wish Grimm had a softer bubble color.",
+    "summary": "Softer Grimm bubble color",
+    "category": "design",
+    "status": "new",
+    "source": "reflection",
+    "reflectionId": "smoke",
+    "createdAt": "2026-07-05T10:15:30.152Z"
+  },
+  {
+    "id": "a4b490fa-8ea3-44c3-85ff-6e5e79dca02c",
+    "originalMessage": "I wish the orb was calmer.",
+    "summary": "I wish the orb was calmer.",
+    "category": "design",
+    "status": "new",
+    "source": "reflection",
+    "reflectionId": "8d510ca5-4c7e-49b5-a5f8-2a43d59a2f2d",
+    "createdAt": "2026-07-05T10:20:12.343Z"
+  },
+  {
+    "id": "7e5409ff-a39a-436c-87c9-5cecb948cb99",
+    "originalMessage": "really? i wish they could talk to each other",
+    "summary": "really? i wish they could talk to each other",
+    "category": "personality",
+    "status": "new",
+    "createdAt": "2026-07-05T13:48:41.895Z"
+  },
+  {
+    "id": "ad170b26-ef25-44ce-9601-bd9e7d6fa90c",
+    "originalMessage": "i think you should learn to talk about yourself",
+    "summary": "i think you should learn to talk about yourself",
+    "category": "personality",
+    "status": "new",
+    "createdAt": "2026-07-05T13:58:31.566Z"
+  },
+  {
+    "id": "9075da10-4fe3-4d8a-ba2f-8227a31697fe",
+    "originalMessage": "grimm: I'm Grimm. I need a log, feed the pond, and don't try to impress me with vibes.",
+    "summary": "grimm: I'm Grimm. I need a log, feed the pond, and don't try to impress me with vibes.",
+    "category": "personality",
+    "status": "new",
+    "source": "reflection",
+    "reflectionId": "f1ba60c5-fd3b-4c45-aacd-c3f3a8d5c009",
+    "createdAt": "2026-07-05T15:35:53.223Z"
+  }
+]
