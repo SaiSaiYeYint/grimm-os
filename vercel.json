@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "functions": {
+    "api/grimm.js": {
+      "includeFiles": "{grimm/**,builder/templates/**}"
+    },
+    "api/lab.js": {
+      "includeFiles": "{grimm/**,builder/templates/**}"
+    }
+  },
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/lab", "destination": "/lab.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

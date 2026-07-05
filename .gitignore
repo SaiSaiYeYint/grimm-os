@@ -1,12 +1,28 @@
+# Dependencies
 node_modules/
+
+# Environment secrets
 .env
-api/
-server.js
-package.json
-pnpm-lock.yaml
-pnpm-workspace.yaml
-vercel.json
-start-grimm-bridge.ps1
-GRIMM_API_CONTRACT.md
-CLAUDE_TESTING.md
-VERCEL_DEPLOY.md
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Build output
+dist/
+build/
+.vercel/
+
+# Temporary files
+*.tmp
+*.cache
