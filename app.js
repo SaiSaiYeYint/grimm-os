@@ -121,6 +121,24 @@ const KOI_SWIM_FRAMES = [0, 1, 2, 3, 4, 3, 2, 1];
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 const coarsePointer = matchMedia("(pointer: coarse)").matches;
 
+class LocalAppStorage {
+  constructor(key, oldKey) {
+    this.key = key;
+    this.oldKey = oldKey;
+  }
+
+  load() {
+    const raw = localStorage.getItem(this.key) || localStorage.getItem(this.oldKey);
+    return raw ? JSON.parse(raw) : null;
+  }
+
+  save(value) {
+    localStorage.setItem(this.key, JSON.stringify(value));
+  }
+}
+
+const appStorage = new LocalAppStorage(KEY, OLD_KEY);
+
 function spriteForKind(kind) {
   if (kind === "gold" && goldKoiSpriteReady) return goldKoiSprite;
   if (kind === "kohaku" && koiSpriteReady) return koiSprite;
@@ -129,7 +147,7 @@ function spriteForKind(kind) {
 
 function load() {
   try {
-    const saved = JSON.parse(localStorage.getItem(KEY) || localStorage.getItem(OLD_KEY));
+    const saved = appStorage.load();
     const hasGoalTrophyRules = saved?.trophyVersion === 2;
     const loaded = saved ? merge(structuredClone(base), saved) : structuredClone(base);
     if (!hasGoalTrophyRules) {
@@ -153,7 +171,7 @@ function merge(a, b) {
 }
 
 function save() {
-  localStorage.setItem(KEY, JSON.stringify(state));
+  appStorage.save(state);
 }
 
 function ensureAiDefaults() {

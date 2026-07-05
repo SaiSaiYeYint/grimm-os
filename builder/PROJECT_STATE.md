@@ -5,9 +5,13 @@ Grimm is the strange friend living under the pond, not a productivity bot or gen
 # Current Architecture
 
 - 3-layer UI: `pondLayer` is the fixed animated pond background, `pageLayer` holds app pages such as Done List, and `chatLayer` owns Grimm chat, the orb, composer, minimized/maximized states, and keyboard mode.
-- GrimmService: the single backend AI entry point. The UI never calls Gemini directly. Gemini receives `grimm/constitution.md` as system instruction before every request.
+- GrimmRuntime: the backend AI lifecycle. The UI never calls Gemini directly. Runtime loads memory, asks PromptService to build prompts, calls ProviderService, validates output, saves updates, and returns a normalized reply.
+- PromptService: assembles constitution, personality/rules/examples, active mode prompt, memory summary, recent messages, current message, and response schema.
+- ProviderService: hides the active provider. Current adapter is Gemini; future adapters are Ollama, LM Studio, OpenAI, Claude, and Mock.
+- ResponseValidator: validates and normalizes AI JSON before memory or other updates are trusted.
 - MemoryService: wraps local player memory and memory updates. Storage remains local for now.
 - ImprovementService: silently captures owner improvement ideas during normal conversation, groups them, reviews them in Work Time, and supports approval/rejection.
+- LocalAppStorage: wraps frontend localStorage for prototype UI state.
 - Builder Protocol: approved ideas can become provider-agnostic markdown work orders in `builder/work_orders/`. Any AI builder can continue from these files.
 
 # Current Status
@@ -16,7 +20,9 @@ Complete:
 
 - Core pond prototype with fish, feeding, Done List, week tracker, coins, trophies, and Grimm chat layer.
 - 3-layer UI architecture and keyboard mode guardrails.
-- Gemini backend through GrimmService.
+- Gemini backend through GrimmRuntime and ProviderService.
+- PromptService, ProviderService, and ResponseValidator foundation for future local AI.
+- LocalAppStorage wrapper for frontend prototype state.
 - Constitution-driven Grimm identity.
 - Local MemoryService.
 - Local ImprovementService.
@@ -44,21 +50,24 @@ Do not refactor these unless necessary:
 - Keyboard mode and VisualViewport handling.
 - Grimm orb + composer as one chat dock.
 - Pond feeding rule: only in Pond view while chat is minimized.
-- GrimmService as the only AI entry point.
+- GrimmRuntime as the only AI lifecycle entry point.
+- ProviderService as the only model-provider entry point.
+- PromptService as the only prompt assembly entry point.
 - Constitution as Grimm's identity source.
 - Builder Work Order protocol.
 
 # Current Priority
 
-Stabilize Work Time so Grimm can review improvements and unfinished Work Orders clearly without generating or executing code automatically.
+Stabilize the pre-local-AI architecture so local providers can be added through ProviderService without rewriting the UI or GrimmRuntime.
 
 # Next Planned Features
 
-1. Make Work Time review unfinished Work Orders in a useful one-at-a-time flow.
-2. Improve relationship-first Gemini behavior through prompt tuning and testing.
-3. Add persistent storage for memory, improvements, and Work Orders.
-4. Improve Done List detection so logging feels natural inside conversation.
-5. Continue pond visual polish and fish behavior improvements.
+1. Finish service-boundary cleanup around frontend state and local fallback logic.
+2. Make Work Time review unfinished Work Orders in a useful one-at-a-time flow.
+3. Add a local AI provider adapter through ProviderService.
+4. Add persistent storage for memory, improvements, and Work Orders.
+5. Improve Done List detection so logging feels natural inside conversation.
+6. Continue pond visual polish and fish behavior improvements.
 
 # Technical Debt
 
@@ -68,6 +77,7 @@ Stabilize Work Time so Grimm can review improvements and unfinished Work Orders 
 - Work Order creation currently uses deterministic service logic, not a full editable workshop review.
 - Need better duplicate detection for similar but not identical improvement ideas.
 - Need a production-safe way to inspect saved improvements and work orders.
+- `GrimmService` remains as a compatibility facade and can be removed after all imports use GrimmRuntime.
 
 # AI Builder Rules
 
@@ -83,9 +93,8 @@ Every builder must:
 
 # Last Updated
 
-Version: 0.1.0-workshop-foundation
+Version: 0.2.0-pre-local-ai-foundation
 
-Date: 2026-07-04
+Date: 2026-07-05
 
-Summary of latest changes: Added Builder Protocol, Work Order template, Work Time improvement review, approval/rejection flow, and provider-agnostic Work Order generation.
-
+Summary of latest changes: Added GrimmRuntime, PromptService, ProviderService, and ResponseValidator foundation so future local AI providers can plug in without rewriting the UI.
