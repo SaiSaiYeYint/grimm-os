@@ -1,9 +1,12 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import { ObsidianVaultService } from "./ObsidianVaultService.js";
 
 export class PromptService {
-  constructor(root = process.cwd()) {
+  constructor(root = process.cwd(), obsidianVault = new ObsidianVaultService(root)) {
     this.root = root;
+    this.obsidianVault = obsidianVault;
+    this.obsidianVault.syncProjectDocs();
   }
 
   build(input = {}) {
@@ -11,6 +14,7 @@ export class PromptService {
       systemInstruction: this.coreFiles().map(file => this.section(file)).filter(Boolean).join("\n\n"),
       userPrompt: [
         ...this.promptFiles(input.mode).map(file => this.section(file)),
+        this.section("runtime/detected-intent.json", JSON.stringify(input.detectedIntent || {}, null, 2)),
         this.section("runtime/memory-summary.json", JSON.stringify(this.memorySummary(input.playerMemory), null, 2)),
         input.reflectionSummary ? this.section("runtime/private-reflection-summary.json", JSON.stringify(input.reflectionSummary, null, 2)) : "",
         this.section("runtime/recent-messages.json", JSON.stringify(input.recentMessages || [], null, 2)),
@@ -30,6 +34,7 @@ export class PromptService {
 
   coreFiles() {
     return [
+      "grimm/vision.md",
       "grimm/identity.md",
       "grimm/mission.md",
       "grimm/voice.md",
@@ -48,6 +53,10 @@ export class PromptService {
 
   read(file) {
     try {
+      if (file.startsWith("grimm/")) {
+        const vaultDoc = this.obsidianVault.readSystemDoc(file);
+        if (vaultDoc.trim()) return vaultDoc;
+      }
       return readFileSync(join(this.root, file), "utf8");
     } catch {
       return "";

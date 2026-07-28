@@ -1,4 +1,4 @@
-# AGENTS.md - Grimm App
+﻿# AGENTS.md - Grimm App
 
 This repo is the codebase. The durable project brain lives in Obsidian.
 
@@ -6,10 +6,10 @@ This repo is the codebase. The durable project brain lives in Obsidian.
 
 Before changing code, architecture, prompts, schemas, memory behavior, or project direction, read:
 
-1. `C:\Backroom\backroom\10 Projects\Grimm App\Project Home.md`
-2. `C:\Backroom\backroom\10 Projects\Grimm App\Agent Operating Rules.md`
-3. `C:\Backroom\backroom\10 Projects\Grimm App\Memory System.md` when the task touches memory, persistence, AI behavior, or project context.
-4. `C:\Backroom\backroom\Grimm\Memory\Memory Architecture.md` when the task touches Grimm runtime memory or character memory.
+1. `C:\Brain\10 Projects\Grimm App\Project Home.md`
+2. `C:\Brain\10 Projects\Grimm App\Agent Operating Rules.md`
+3. `C:\Brain\10 Projects\Grimm App\Memory System.md` when the task touches memory, persistence, AI behavior, or project context.
+4. `C:\Brain\Grimm\Memory\Memory Architecture.md` when the task touches Grimm runtime memory or character memory.
 
 Then inspect the relevant repo files and check `git status`.
 
@@ -25,7 +25,7 @@ Then inspect the relevant repo files and check `git status`.
 - Run the smallest useful verification.
 - Summarize changed files and behavior.
 - Update the relevant Obsidian note when the work changes project direction, architecture, memory design, or future tasks.
-- Add important decisions to `C:\Backroom\backroom\40 Logs\Decision Log.md`.
+- Add important decisions to `C:\Brain\40 Logs\Decision Log.md`.
 
 ## Current Important Notes
 

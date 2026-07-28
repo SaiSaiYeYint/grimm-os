@@ -6,7 +6,9 @@ Grimm is the strange friend living under the pond, not a productivity bot or gen
 
 - 3-layer UI: `pondLayer` is the fixed animated pond background, `pageLayer` holds app pages such as Done List, and `chatLayer` owns Grimm chat, the orb, composer, minimized/maximized states, and keyboard mode.
 - GrimmRuntime: the backend AI lifecycle. The UI never calls Gemini directly. Runtime loads memory, asks PromptService to build prompts, calls ProviderService, validates output, saves updates, and returns a normalized reply.
-- PromptService: assembles constitution, personality/rules/examples, active mode prompt, memory summary, recent messages, current message, and response schema.
+- IntentService: classifies every incoming message before memory and prompt assembly so Grimm can understand why the player is speaking.
+- PromptService: assembles vision, constitution, personality/rules/examples, detected intent, active mode prompt, memory summary, recent messages, current message, and response schema.
+- ObsidianVaultService: initializes and maintains Grimm's provider-agnostic Markdown memory/project workspace. Current shared vault is `C:\Brain\Grimm`; project fallback is `obsidian/GrimmVault`. PromptService reads Grimm system docs from the vault first, then repo files as fallback.
 - ProviderService: hides the active provider. Current local adapter is Ollama through `AI_PROVIDER=ollama`; Gemini remains supported through `AI_PROVIDER=gemini`.
 - ResponseValidator: validates and normalizes AI JSON before memory or other updates are trusted.
 - ReflectionService: stores internal-only reflection entries after conversations. Reflections are not player memory; memory updates remain suggestions unless accepted by MemoryService.
@@ -24,12 +26,16 @@ Complete:
 - Real Grimm chat can run through local Ollama using GrimmRuntime and ProviderService.
 - Gemini remains available as a ProviderService adapter.
 - Grimm Lab at `/lab` for provider debugging with raw response, validated response, final reply, errors, and provider status.
+- IntentService for initial message classification across casual chat, jokes, emotional support, done logging, goals, reflection, Grimm feedback, app improvements, Work Time, admin commands, and unknown messages.
+- `grimm/vision.md` as permanent design philosophy for Grimm OS.
+- Shared Obsidian vault at `C:\Brain\Grimm` with system notes, player memory notes, reflection notes, improvement inbox, work orders, project docs, and AI builder protocol.
 - PromptService, ProviderService, and ResponseValidator foundation for future local AI.
 - ReflectionService for internal conversation summaries, pattern detection, memory suggestions, improvement ideas, and Burmese misunderstanding candidates.
 - LocalAppStorage wrapper for frontend prototype state.
 - Constitution-driven Grimm identity.
 - Local MemoryService.
 - Local ImprovementService.
+- MemoryService, ReflectionService, ImprovementService, and WorkOrderService mirror runtime state into Obsidian Markdown.
 - Work Time entry through `simon says work time`.
 - YES/NO approval flow for improvement ideas.
 - Work Order folder, template, README, and provider-agnostic work order generation on approved ideas.
@@ -39,6 +45,7 @@ In progress:
 - Work Time is becoming Grimm's project workshop.
 - Improvement review and Work Order management are still early.
 - Grimm's relationship-first behavior depends on the constitution and prompt files, but needs more testing.
+- IntentService has deterministic regression coverage; provider-backed conversational behavior still needs Grimm Lab and real-chat testing.
 
 Blocked:
 
@@ -57,20 +64,22 @@ Do not refactor these unless necessary:
 - GrimmRuntime as the only AI lifecycle entry point.
 - ProviderService as the only model-provider entry point.
 - PromptService as the only prompt assembly entry point.
+- ObsidianVaultService as the only Obsidian vault boundary.
+- IntentService as the only intent classification entry point.
 - ReflectionService as the internal reflection entry point.
 - Constitution as Grimm's identity source.
 - Builder Work Order protocol.
 
 # Current Priority
 
-Stabilize local Ollama testing in the real Grimm chat while keeping provider switching inside ProviderService.
+Use Obsidian as Grimm's provider-agnostic memory/project workspace while keeping runtime services clean and replaceable.
 
 # Next Planned Features
 
-1. Finish service-boundary cleanup around frontend state and local fallback logic.
-2. Make Work Time review unfinished Work Orders in a useful one-at-a-time flow.
-3. Test local Ollama behavior in real Grimm chat and Grimm Lab.
-4. Add persistent storage for memory, improvements, and Work Orders.
+1. Test Obsidian vault updates from real Grimm chat, reflections, improvements, and Work Orders.
+2. Test IntentService behavior in real Grimm chat and Grimm Lab.
+3. Finish service-boundary cleanup around frontend state and local fallback logic.
+4. Make Work Time review unfinished Work Orders in a useful one-at-a-time flow.
 5. Improve Done List detection so logging feels natural inside conversation.
 6. Continue pond visual polish and fish behavior improvements.
 
@@ -84,6 +93,8 @@ Stabilize local Ollama testing in the real Grimm chat while keeping provider swi
 - Need a production-safe way to inspect saved improvements and work orders.
 - `GrimmService` remains as a compatibility facade and can be removed after all imports use GrimmRuntime.
 - ReflectionService currently uses deterministic heuristics and should later support provider-assisted reflection when storage and local AI are stable.
+- IntentService is deterministic and should later become hybrid/rule-plus-model only if needed.
+- Obsidian vault is local-first; cloud sync/database strategy is not decided yet.
 
 # AI Builder Rules
 
@@ -99,8 +110,8 @@ Every builder must:
 
 # Last Updated
 
-Version: 0.2.2-local-ollama-chat
+Version: 0.2.4-obsidian-vault
 
-Date: 2026-07-05
+Date: 2026-07-09
 
-Summary of latest changes: Connected local Ollama to real Grimm chat through ProviderService and added provider status to Grimm Lab.
+Summary of latest changes: Added ObsidianVaultService and initialized `obsidian/GrimmVault` as Grimm's provider-agnostic Markdown memory/project workspace.

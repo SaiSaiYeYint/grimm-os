@@ -23,6 +23,9 @@ dist/
 build/
 .vercel/
 
+# Local Obsidian fallback vault
+obsidian/
+
 # Temporary files
 *.tmp
 *.cache

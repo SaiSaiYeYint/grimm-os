@@ -1,10 +1,13 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
+import { ObsidianVaultService } from "./ObsidianVaultService.js";
 
 export class MemoryService {
-  constructor(root = process.cwd()) {
+  constructor(root = process.cwd(), obsidianVault = new ObsidianVaultService(root)) {
     this.dataDir = process.env.VERCEL ? join(tmpdir(), "grimm-data") : join(root, "data");
+    this.obsidianVault = obsidianVault;
+    this.obsidianVault.syncProjectDocs();
   }
 
   load() {
@@ -14,7 +17,9 @@ export class MemoryService {
 
   save(memory) {
     this.ensure();
-    this.write("player_memory.json", { ...memory, updatedAt: new Date().toISOString() });
+    const next = { ...memory, updatedAt: new Date().toISOString() };
+    this.write("player_memory.json", next);
+    this.obsidianVault.writePlayerMemory(next);
   }
 
   forRequest(clientMemory = {}) {

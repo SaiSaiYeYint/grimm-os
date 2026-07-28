@@ -4,6 +4,7 @@ import { ProviderService } from "./ProviderService.js";
 import { ResponseValidator } from "./ResponseValidator.js";
 import { ReflectionService } from "./ReflectionService.js";
 import { ImprovementService } from "./ImprovementService.js";
+import { IntentService } from "./IntentService.js";
 
 export class GrimmRuntime {
   constructor({
@@ -12,7 +13,8 @@ export class GrimmRuntime {
     providerService = new ProviderService(),
     responseValidator = new ResponseValidator(),
     reflectionService = new ReflectionService(),
-    improvementService = new ImprovementService()
+    improvementService = new ImprovementService(),
+    intentService = new IntentService()
   } = {}) {
     this.memoryService = memoryService;
     this.promptService = promptService;
@@ -20,6 +22,14 @@ export class GrimmRuntime {
     this.responseValidator = responseValidator;
     this.reflectionService = reflectionService;
     this.improvementService = improvementService;
+    this.intentService = intentService;
+    // TODO: Relationship Engine
+    // TODO: Observation Engine
+    // TODO: Mood Engine
+    // TODO: Goal Engine
+    // TODO: Story Engine
+    // TODO: Workshop
+    // TODO: Event Engine
   }
 
   async respond(input = {}) {
@@ -80,9 +90,12 @@ export class GrimmRuntime {
 
   prepareInput(input = {}) {
     const mode = String(input.mode || "normal");
+    const message = String(input.message || "");
+    const detectedIntent = this.intentService.classify(message, { mode });
     return {
-      message: String(input.message || ""),
+      message,
       mode,
+      detectedIntent,
       playerMemory: this.memoryService.forRequest(input.playerMemory || {}),
       recentMessages: Array.isArray(input.recentMessages) ? input.recentMessages.slice(-12) : [],
       improvementIdea: input.improvementIdea || null,

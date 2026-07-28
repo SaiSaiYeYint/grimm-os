@@ -1,9 +1,12 @@
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { ObsidianVaultService } from "./ObsidianVaultService.js";
 
 export class WorkOrderService {
-  constructor(root = process.cwd()) {
+  constructor(root = process.cwd(), obsidianVault = new ObsidianVaultService(root)) {
     this.dir = join(root, "builder", "work_orders");
+    this.obsidianVault = obsidianVault;
+    this.obsidianVault.syncProjectDocs();
   }
 
   createFromImprovement(decision, ideas = []) {
@@ -15,6 +18,7 @@ export class WorkOrderService {
     const path = join(this.dir, fileName);
     const content = renderWorkOrder({ title, decision, ideas });
     writeFileSync(path, content, "utf8");
+    this.obsidianVault.writeWorkOrder(fileName, content);
     return { title, fileName, path };
   }
 

@@ -1,11 +1,14 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
+import { ObsidianVaultService } from "./ObsidianVaultService.js";
 
 export class ReflectionService {
-  constructor(root = process.cwd()) {
+  constructor(root = process.cwd(), obsidianVault = new ObsidianVaultService(root)) {
     this.dataDir = process.env.VERCEL ? join(tmpdir(), "grimm-data") : join(root, "data");
     this.fileName = "reflections.json";
+    this.obsidianVault = obsidianVault;
+    this.obsidianVault.syncProjectDocs();
   }
 
   reflect({ message = "", reply = "", recentMessages = [], mode = "normal", memoryUpdate = {}, improvementIdea = null } = {}) {
@@ -58,6 +61,7 @@ export class ReflectionService {
     const entries = this.load();
     entries.push(entry);
     this.save(entries.slice(-500));
+    this.obsidianVault.appendReflection(entry);
   }
 
   save(entries) {

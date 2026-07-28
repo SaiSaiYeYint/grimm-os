@@ -1,11 +1,14 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
+import { ObsidianVaultService } from "./ObsidianVaultService.js";
 
 export class ImprovementService {
-  constructor(root = process.cwd()) {
+  constructor(root = process.cwd(), obsidianVault = new ObsidianVaultService(root)) {
     this.dataDir = process.env.VERCEL ? join(tmpdir(), "grimm-data") : join(root, "data");
     this.fileName = "improvements.json";
+    this.obsidianVault = obsidianVault;
+    this.obsidianVault.syncProjectDocs();
   }
 
   capture(message = "", mode = "normal") {
@@ -113,6 +116,7 @@ export class ImprovementService {
   save(ideas) {
     this.ensure();
     writeFileSync(join(this.dataDir, this.fileName), JSON.stringify(ideas, null, 2) + "\n", "utf8");
+    this.obsidianVault.writeImprovementInbox(ideas);
   }
 
   ensure() {

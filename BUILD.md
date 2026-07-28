@@ -159,7 +159,9 @@ Runtime flow:
 ```txt
 message
 -> GrimmRuntime
+-> IntentService
 -> MemoryService
+-> ReflectionService summary
 -> PromptService
 -> ProviderService
 -> ResponseValidator
@@ -175,6 +177,7 @@ message
 Responsibilities:
 
 - normalize runtime input
+- classify incoming messages with `IntentService`
 - load memory through `MemoryService`
 - ask `PromptService` to assemble prompts
 - call the selected provider through `ProviderService`
@@ -187,6 +190,8 @@ Responsibilities:
 
 `PromptService` assembles:
 
+- `grimm/vision.md` as private background philosophy
+- detected intent runtime context
 - `grimm/constitution.md`
 - personality/rules/examples files when present
 - the active mode prompt
@@ -196,6 +201,101 @@ Responsibilities:
 - response schema
 
 Prompt assembly should stay provider-independent. Provider adapters should not decide Grimm's personality.
+
+PromptService reads Grimm system documents from the Obsidian vault first when available, then falls back to the repo `grimm/` files. This lets Grimm's personality evolve through Markdown notes without code changes.
+
+### ObsidianVaultService
+
+`ObsidianVaultService` owns Grimm's local Obsidian workspace.
+
+Default fallback vault:
+
+```txt
+obsidian/GrimmVault/
+```
+
+Current shared Brain vault:
+
+```txt
+C:\Brain\Grimm
+```
+
+Override with:
+
+```env
+OBSIDIAN_VAULT_PATH=C:\path\to\GrimmVault
+```
+
+Vault structure:
+
+```txt
+00_System/
+  vision.md
+  identity.md
+  mission.md
+  voice.md
+  constitution.md
+  examples.md
+  rules.md
+  operating_manual.md
+01_Player/
+  memory.md
+  goals.md
+  patterns.md
+02_Reflections/
+03_Improvements/
+  inbox.md
+04_Work_Orders/
+05_Project/
+  BUILD.md
+  PROJECT_STATE.md
+START_HERE.md
+AI_BUILDER_PROTOCOL.md
+```
+
+The vault is provider-agnostic. Codex, Claude Code, Gemini CLI, Cursor, Ollama, LM Studio, OpenAI, and future AI builders should all be able to read it.
+
+Runtime writes:
+
+- `MemoryService` mirrors player memory into `01_Player/`.
+- `ReflectionService` appends reflection notes into `02_Reflections/`.
+- `ImprovementService` mirrors improvement suggestions into `03_Improvements/inbox.md`.
+- `WorkOrderService` mirrors approved work orders into `04_Work_Orders/`.
+
+Do not hardcode Grimm's identity in code. Edit the vault notes instead.
+
+### IntentService
+
+`IntentService` classifies every incoming message before memory and prompt assembly.
+
+Initial intents:
+
+- `casual_chat`
+- `joke_play`
+- `emotional_support`
+- `done_logging`
+- `goal_statement`
+- `reflection`
+- `feedback_about_grimm`
+- `app_improvement`
+- `work_time`
+- `admin_command`
+- `unknown`
+
+It returns:
+
+```js
+{
+  intent,
+  confidence,
+  entities,
+  suggestedActions
+}
+```
+
+The detected intent is prompt context only. It helps Grimm understand why the player is speaking without adding UI behavior.
+
+Intent regression tests live in `services/IntentService.test.js` and run with `npm.cmd test` on Windows PowerShell.
 
 ### ProviderService
 
@@ -272,6 +372,7 @@ Reflection storage is separate from `MemoryService`.
 
 Storage should be accessed through service boundaries:
 
+- `ObsidianVaultService` owns the Markdown vault boundary.
 - `MemoryService` owns player memory storage.
 - `ImprovementService` owns improvement inbox storage.
 - `ReflectionService` owns internal reflection storage.
@@ -293,6 +394,7 @@ Memory:
 - `MemoryService` wraps local player memory.
 - Supabase is not implemented yet.
 - `PromptService` loads `grimm/constitution.md` before every AI request.
+- `PromptService` loads `grimm/vision.md` as private background philosophy and must not quote or expose it.
 
 Input contract:
 
